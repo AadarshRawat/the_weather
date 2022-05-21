@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        {%load static%}
+    <link rel="stylesheet" href="style.css">
+
+
+    <title> Weather App</title>
+    <style>
+        * {
+            font-size: 20px;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+        }
+
+        #main {
+            text-align: center;
+            padding-top: 150px;
+            width:100%;
+            position:absolute
+
+        }
+
+        h1 {
+            font-size:2em;
+            margin-bottom: 20px;
+            font-weight:bolder;
+        }
+
+        input[type='text'] {
+            width: 20%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 2px solid black;
+
+
+        }
+
+        input[type='submit'] {
+            width: 10%;
+            padding: 5px;
+            background: black;
+            color: white;
+            text-transform: uppercase;
+
+        }
+        form {
+
+            margin-bottom: 20px;
+        }
+
+
+
+
+
+
+
+
+        @media (max-width:800px){
+
+            input[type='text'] {
+            width: 50%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 2px solid black;
+
+
+        }
+
+        input[type='submit'] {
+            width: 60%;
+            padding: 5px;
+            background: black;
+            color: white;
+            text-transform: uppercase;
+
+        }
+
+
+        @media (min-width:800px){
+
+            input[type='text'] {
+            width: 55%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 2px solid black;
+
+
+        }
+
+        input[type='submit'] {
+            width: 40%;
+            padding: 5px;
+            background: black;
+            color: white;
+            text-transform: uppercase;
+
+
+        }
+
+
+
+        }
+
+
+
+    </style>
+
+
+
+
+
+</head>
+<body>
+
+
+    <div id="particles-js">
+        <div class="container">
+        <div id="main">
+
+
+
+        <h1> The Weather</h1>
+
+        <form method="GET">
+
+            <div>
+                <label for="city"></label>
+                <input type="text" id="city" value="{{ request.GET.city }}" placeholder="City..." name="city"/>
+            </div>
+            <input type="submit" value="Submit"/>
+        </form>
+        {% if city_weather %}
+
+            <img src="https://openweathermap.org/img/w/{{city_weather.icon}}.png">
+            <h3>City :{{ city_weather.city }}</h3>
+            <h3>Temprature :{{ city_weather.temperature }}°C</h3>
+            <h3>Temprature Max :{{ city_weather.max }}°C</h3>
+            <h3>Temprature MIN:{{ city_weather.min }}°C</h3>
+            <h3>Description :{{ city_weather.description }}</h3>
+
+
+        {% endif %}
+        </div>
+
+        </div>
+        <script type="text/javascript" src="{% static '/js/particlesw.js' %}"></script>
+        <script type="text/javascript" src="{% static '/js/appw.js' %}"></script>
+    </div>
+</body>
+
+</html>
